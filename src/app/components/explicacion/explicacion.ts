@@ -38,6 +38,18 @@ export class ExplicacionComponent {
       titulo: 'Inyección por función inject()',
       descripcion:
         'Alternativa moderna al constructor: se llama inject(Servicio) directamente en el cuerpo del componente. Panel B usa este enfoque.'
+    },
+    {
+      icono: '📡',
+      titulo: 'Signal (señal reactiva)',
+      descripcion:
+        'Signal es una nueva forma reactiva de Angular. MensajeService usa signal() y Panel D lo lee sin RxJS.'
+    },
+    {
+      icono: '📤',
+      titulo: '@Output / @Input',
+      descripcion:
+        'Comunicación padre-hijo. Panel E emite con output(), el padre recibe y se lo pasa como input() a Panel F.'
     }
   ];
 }

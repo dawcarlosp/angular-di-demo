@@ -63,6 +63,44 @@ Canal reactivo de RxJS que:
 - Notifica automáticamente a todos los suscriptores cuando cambia
 - Los componentes se suscriben con el pipe `| async` (sin `.subscribe()` manual)
 
+### 8. Signal (señal reactiva)
+Alternativa moderna a RxJS para reactividad. Angular 17+ introduce `signal()` que notifica cambios sin librerías externas.
+
+```typescript
+@Injectable({ providedIn: 'root' })
+export class MensajeService {
+  mensaje = signal('');
+
+  enviar(texto: string): void {
+    this.mensaje.set(texto);
+  }
+}
+```
+
+- Panel C escribe en el Signal, Panel D lo lee llamando a `mensaje()`.
+- No necesita `subscribe` ni `async pipe`.
+
+### 9. @Output / @Input (padre-hijo)
+Comunicación clásica entre componente padre e hijo.
+
+```typescript
+// Panel E — emite
+export class PanelEComponent {
+  enviar = output<string>();
+}
+
+// Panel F — recibe
+export class PanelFComponent {
+  mensaje = input('');
+}
+```
+
+```html
+<!-- El padre conecta ambos -->
+<app-panel-e (enviar)="mensaje = $event"></app-panel-e>
+<app-panel-f [mensaje]="mensaje"></app-panel-f>
+```
+
 ---
 
 ## Estructura del proyecto
@@ -70,11 +108,17 @@ Canal reactivo de RxJS que:
 ```
 src/app/
 ├── services/
-│   └── contador.service.ts          ← Servicio central (@Injectable)
+│   ├── contador.service.ts           ← Servicio central (@Injectable + BehaviorSubject)
+│   └── mensaje.service.ts            ← Servicio con Signal
 ├── components/
 │   ├── hero/                         ← Portada visual de la app
-│   ├── panel-a/                      ← Botones: modifica el contador
-│   ├── panel-b/                      ← Solo lectura: refleja el valor
+│   ├── panel-a/                      ← Botones: modifica el contador (constructor DI)
+│   ├── panel-b/                      ← Solo lectura: refleja el valor (inject())
+│   ├── panel-c/                      ← Escribe mensaje (Signal)
+│   ├── panel-d/                      ← Lee mensaje (Signal)
+│   ├── panel-e/                      ← Emite con @Output
+│   ├── panel-f/                      ← Recibe con @Input
+│   ├── padre-compartir/              ← Padre que conecta E y F
 │   └── explicacion/                  ← Tarjetas de conceptos clave
 ├── app.component.ts                  ← Componente raíz
 ├── app.component.html

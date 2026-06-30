@@ -2,8 +2,8 @@
 <app-explicacion></app-explicacion>
 
 <section class="demo-titulo">
-  <h2>Demo en vivo: compartición de estado</h2>
-  <p>Panel A y Panel B <strong>no se conocen</strong>. El contador es del servicio.</p>
+  <h2>1. Servicio + BehaviorSubject</h2>
+  <p>Panel A y Panel B <strong>no se conocen</strong>. Comparten el contador vía BehaviorSubject.</p>
 </section>
 
 <section class="demo-panels">
@@ -11,3 +11,21 @@
   <div class="flecha-central">⟷</div>
   <app-panel-b></app-panel-b>
 </section>
+
+<section class="demo-titulo">
+  <h2>2. Servicio + Signal</h2>
+  <p>Panel C escribe un mensaje, Panel D lo recibe al instante con Signals.</p>
+</section>
+
+<section class="demo-panels">
+  <app-panel-c></app-panel-c>
+  <div class="flecha-central signal-arrow">⟷</div>
+  <app-panel-d></app-panel-d>
+</section>
+
+<section class="demo-titulo">
+  <h2>3. @Output / @Input (padre-hijo)</h2>
+  <p>Panel E emite con @Output, Panel F recibe con @Input. El padre los conecta.</p>
+</section>
+
+<app-padre-compartir></app-padre-compartir>
