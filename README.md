@@ -1,3 +1,13 @@
+# Apartados originales
+ 6 Servicios e Inyección de Dependencias 
+Investigar: 
+• Services.  
+• Injectable.  
+• Dependency Injection.  
+• Inyección mediante constructor.  
+• providedIn.  
+• Compartición de datos entre componentes.  
+
 # Angular — Servicios e Inyección de Dependencias
 
 Aplicación didáctica que demuestra visualmente los conceptos fundamentales de **Servicios** e **Inyección de Dependencias** (DI) en Angular.
