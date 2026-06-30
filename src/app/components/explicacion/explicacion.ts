@@ -32,6 +32,12 @@ export class ExplicacionComponent {
       titulo: 'Compartición de datos',
       descripcion:
         'Varios componentes inyectan el mismo servicio y comparten su estado sin conocerse entre sí.'
+    },
+    {
+      icono: '⚡',
+      titulo: 'Inyección por función inject()',
+      descripcion:
+        'Alternativa moderna al constructor: se llama inject(Servicio) directamente en el cuerpo del componente. Panel B usa este enfoque.'
     }
   ];
 }

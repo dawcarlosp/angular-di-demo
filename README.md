@@ -26,17 +26,28 @@ export class PanelAComponent {
 }
 ```
 
-### 4. Dependency Injection (DI)
+### 4. Inyección por función inject()
+Alternativa moderna a la inyección por constructor. Se importa `inject` desde `@angular/core` y se llama directamente en el cuerpo del componente. Panel B usa este enfoque.
+
+```typescript
+export class PanelBComponent {
+  public contadorService = inject(ContadorService);
+}
+```
+
+Ventajas: no necesita `constructor`, funciona en `pipe()` y `guard` donde no hay constructores, y el código es más conciso.
+
+### 5. Dependency Injection (DI)
 Patrón de diseño donde las dependencias se inyectan desde fuera. Angular tiene su propio sistema de DI que permite desacoplar componentes de sus dependencias, facilitando el testing y la reutilización.
 
-### 5. Compartición de datos entre componentes
+### 6. Compartición de datos entre componentes
 Dos componentes sin relación padre-hijo no pueden usar `@Input`/`@Output`. La solución es un servicio compartido con un `BehaviorSubject`:
 
 - `PanelAComponent` modifica el contador (botones + / - / reiniciar)
 - `PanelBComponent` observa el mismo valor en tiempo real
 - Ambos inyectan el mismo `ContadorService` sin conocerse entre sí
 
-### 6. BehaviorSubject
+### 7. BehaviorSubject
 Canal reactivo de RxJS que:
 - Guarda el valor actual
 - Notifica automáticamente a todos los suscriptores cuando cambia
