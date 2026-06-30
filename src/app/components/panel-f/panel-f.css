@@ -1,0 +1,19 @@
+.panel {
+  background: var(--color-surface);
+  border-radius: var(--radius);
+  padding: 2.5rem;
+  min-width: 280px;
+  text-align: center;
+  border: 1px solid var(--color-surface-light);
+  box-shadow: var(--shadow);
+}
+.panel h2 { font-size: 1.3rem; font-weight: 700; margin-bottom: 0.25rem; }
+.panel .etiqueta { color: var(--color-muted); font-size: 0.85rem; margin-bottom: 1.5rem; }
+.mensaje-recibido {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #F59E0B;
+  min-height: 3rem;
+  word-break: break-word;
+}
+.nota { color: var(--color-muted); font-size: 0.85rem; margin-top: 1rem; }

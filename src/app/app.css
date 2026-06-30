@@ -22,3 +22,6 @@
   color: var(--color-primary);
   opacity: 0.6;
 }
+.signal-arrow {
+  color: #4ADE80;
+}
