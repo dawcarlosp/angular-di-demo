@@ -1,0 +1,40 @@
+.panel {
+  background: var(--color-surface);
+  border-radius: var(--radius);
+  padding: 2.5rem;
+  min-width: 280px;
+  text-align: center;
+  border: 1px solid var(--color-surface-light);
+  box-shadow: var(--shadow);
+}
+
+.panel h2 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.panel .etiqueta {
+  color: var(--color-muted);
+  font-size: 0.85rem;
+  margin-bottom: 1.5rem;
+}
+
+.valor {
+  font-size: 5rem;
+  font-weight: 900;
+  line-height: 1;
+  margin-bottom: 1.5rem;
+  transition: transform 0.2s ease;
+}
+
+.valor.reflejo {
+  color: var(--color-secondary);
+}
+
+.nota {
+  color: var(--color-muted);
+  font-size: 0.85rem;
+  line-height: 1.6;
+  margin-top: 1rem;
+}

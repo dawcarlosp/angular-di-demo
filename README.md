@@ -1,59 +1,86 @@
-# AngularDiDemo
+# Angular — Servicios e Inyección de Dependencias
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.0.2.
+Aplicación didáctica que demuestra visualmente los conceptos fundamentales de **Servicios** e **Inyección de Dependencias** (DI) en Angular.
 
-## Development server
+## Conceptos trabajados
 
-To start a local development server, run:
+### 1. @Injectable
+Decorador que marca una clase como un servicio que Angular puede gestionar dentro de su sistema de inyección de dependencias. Sin él, Angular no puede instanciar ni entregar el servicio.
+
+```typescript
+@Injectable({
+  providedIn: 'root'
+})
+export class ContadorService { ... }
+```
+
+### 2. providedIn: 'root'
+Registra el servicio en el inyector raíz de la aplicación. Angular crea **una única instancia** (singleton) compartida por todos los componentes que la soliciten.
+
+### 3. Inyección por constructor
+El componente declara el servicio como parámetro de su constructor y Angular lo entrega automáticamente. El componente nunca llama a `new Servicio()`.
+
+```typescript
+export class PanelAComponent {
+  constructor(public contadorService: ContadorService) {}
+}
+```
+
+### 4. Dependency Injection (DI)
+Patrón de diseño donde las dependencias se inyectan desde fuera. Angular tiene su propio sistema de DI que permite desacoplar componentes de sus dependencias, facilitando el testing y la reutilización.
+
+### 5. Compartición de datos entre componentes
+Dos componentes sin relación padre-hijo no pueden usar `@Input`/`@Output`. La solución es un servicio compartido con un `BehaviorSubject`:
+
+- `PanelAComponent` modifica el contador (botones + / - / reiniciar)
+- `PanelBComponent` observa el mismo valor en tiempo real
+- Ambos inyectan el mismo `ContadorService` sin conocerse entre sí
+
+### 6. BehaviorSubject
+Canal reactivo de RxJS que:
+- Guarda el valor actual
+- Notifica automáticamente a todos los suscriptores cuando cambia
+- Los componentes se suscriben con el pipe `| async` (sin `.subscribe()` manual)
+
+---
+
+## Estructura del proyecto
+
+```
+src/app/
+├── services/
+│   └── contador.service.ts          ← Servicio central (@Injectable)
+├── components/
+│   ├── hero/                         ← Portada visual de la app
+│   ├── panel-a/                      ← Botones: modifica el contador
+│   ├── panel-b/                      ← Solo lectura: refleja el valor
+│   └── explicacion/                  ← Tarjetas de conceptos clave
+├── app.component.ts                  ← Componente raíz
+├── app.component.html
+└── app.component.css
+```
+
+## Requisitos
+
+- Node.js 18+
+- Angular CLI 18+ (`npm install -g @angular/cli`)
+
+## Desarrollo
 
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Navega a `http://localhost:4200/`. La app recarga automáticamente al modificar cualquier archivo.
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
+## Build
 
 ```bash
 ng build
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Genera los artefactos en `dist/`.
 
-## Running unit tests
+---
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Proyecto educativo — Alumno 6

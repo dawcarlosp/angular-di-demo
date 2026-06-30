@@ -1,1 +1,19 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  --color-primary: #6C63FF;
+  --color-secondary: #FF6584;
+  --color-dark: #12111A;
+  --color-surface: #1E1D2E;
+  --color-surface-light: #2A2840;
+  --color-text: #E8E6F0;
+  --color-muted: #9B99B5;
+  --radius: 16px;
+  --shadow: 0 8px 32px rgba(108, 99, 255, 0.2);
+  --transition: 0.25s ease;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  background: var(--color-dark);
+  color: var(--color-text);
+}

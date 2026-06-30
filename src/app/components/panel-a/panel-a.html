@@ -1,0 +1,12 @@
+<div class="panel panel-a">
+  <h2>Panel A</h2>
+  <p class="etiqueta">Controla el contador</p>
+
+  <div class="valor">{{ contadorService.contador$ | async }}</div>
+
+  <div class="botones">
+    <button class="btn btn-aumentar" (click)="contadorService.incrementar()">＋</button>
+    <button class="btn btn-reiniciar" (click)="contadorService.reiniciar()">↺</button>
+    <button class="btn btn-disminuir" (click)="contadorService.decrementar()">－</button>
+  </div>
+</div>

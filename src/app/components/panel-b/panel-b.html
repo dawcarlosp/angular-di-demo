@@ -1,0 +1,11 @@
+<div class="panel panel-b">
+  <h2>Panel B</h2>
+  <p class="etiqueta">Solo observa el valor compartido</p>
+
+  <div class="valor reflejo">{{ contadorService.contador$ | async }}</div>
+
+  <p class="nota">
+    Este panel no tiene botones.<br>
+    El valor cambia porque comparte el mismo servicio que Panel A.
+  </p>
+</div>
