@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { AsyncPipe } from '@angular/common';
 import { ContadorService } from '../../services/contador';
 
@@ -9,7 +9,6 @@ import { ContadorService } from '../../services/contador';
   templateUrl: './panel-b.html',
   styleUrl: './panel-b.css'
 })
-export class PanelBComponent {
-
-  constructor(public contadorService: ContadorService) {}
+export class PanelBComponent {  
+  public contadorService = inject(ContadorService);
 }
